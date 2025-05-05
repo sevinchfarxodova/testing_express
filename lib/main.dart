@@ -1,21 +1,43 @@
 import 'package:flutter/material.dart';
 
-import 'core/responsiveness/app_responsive.dart';
+import 'app.dart';
+import 'core/local_source/storage_repository.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/services.dart';
+import 'languages/codegen_loader.g.dart';
 
-void main() {
-  runApp(const MyApp());
+void main(List<String> args) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await EasyLocalization.ensureInitialized();
+  StorageRepository.instance;
+
+
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent, // Transparent status bar
+    statusBarBrightness: Brightness.dark, // Dark text for status bar
+    statusBarIconBrightness: Brightness.dark,
+  ));
+  runApp(
+    EasyLocalization(
+      path: 'assets/languages',
+      supportedLocales: [
+        Locale('en'),
+        Locale('ru'),
+        Locale('uz'),
+      ],
+      fallbackLocale: Locale('ru'),
+      assetLoader: CodegenLoader(),
+      child:  MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    AppResponsive.init(context);
-    return MaterialApp(
-      title: 'Flutter Demo',
-     // home:  MyHomePage(),
-    );
-  }
-}
+
 
