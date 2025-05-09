@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app.dart';
+import 'core/di/service_locator.dart';
 import 'core/local_source/storage_repository.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,7 @@ void main(List<String> args) async {
   await EasyLocalization.ensureInitialized();
   StorageRepository.instance;
 
-
+  await setupServiceLocator();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
