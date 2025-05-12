@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:express_testing/features/profile/data/data_source/profile_data_source.dart';
+import 'package:express_testing/features/profile/domain/entity/streak_response_entity.dart';
 import '../../../../core/global/models/network_response.dart';
 import '../../domain/repository/profile_repo.dart';
 import '../model/profile_model.dart';
@@ -41,4 +42,11 @@ class ProfileRepoImpl extends ProfileRepo {
   Future<NetworkResponse> uploadFile({required File file}) async {
     return await remoteDataSource.uploadFile(file: file);
   }
+
+  @override
+  Future<StreakResponseEntity> getStreaks()async {
+    final model = await remoteDataSource.getStreaks();
+    return model.toEntity();
+  }
+
 }

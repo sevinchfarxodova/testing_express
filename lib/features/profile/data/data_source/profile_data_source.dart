@@ -1,6 +1,7 @@
 import 'dart:io';
 import '../../../../core/global/models/network_response.dart';
 import '../model/profile_model.dart';
+import '../model/streak_response_model.dart';
 
 abstract class ProfileRemoteDataSource {
   Future<NetworkResponse> updateUser({required ProfileModel profileModel});
@@ -14,4 +15,6 @@ abstract class ProfileRemoteDataSource {
   Future<NetworkResponse> fetchUser();
 
   Future<NetworkResponse> uploadFile({required File file});
+
+  Future<StreakResponseModel> getStreaks();
 }

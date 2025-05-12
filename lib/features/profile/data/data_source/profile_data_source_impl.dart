@@ -4,6 +4,7 @@ import 'package:express_testing/core/dio_client/api_service.dart';
 import 'package:express_testing/core/global/models/network_response.dart';
 import 'package:express_testing/features/profile/data/data_source/profile_data_source.dart';
 import 'package:express_testing/features/profile/data/model/profile_model.dart';
+import 'package:express_testing/features/profile/data/model/streak_response_model.dart';
 import 'package:flutter/cupertino.dart';
 import '../../../../core/dio_client/api_urls.dart';
 
@@ -74,7 +75,6 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     required ProfileModel profileModel,
   }) async {
     NetworkResponse networkResponse = NetworkResponse();
-
     try {
       final response = await dioClient.put(
         ApiUrls.updateProfile,
@@ -97,11 +97,26 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
     throw UnimplementedError();
   }
 
-
   Future<NetworkResponse> logOut() async {
     NetworkResponse networkResponse = NetworkResponse();
 
     return networkResponse;
+  }
+
+
+  @override
+  Future<StreakResponseModel> getStreaks()async {
+    try {
+      final response = await dioClient.get(
+          ApiUrls.streakList);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return StreakResponseModel.fromJson(response.data);
+      } else {
+        throw Exception(_parseError(response));
+      }
+    } on DioException catch (e) {
+      throw Exception(_parseDioError(e));
+    }
   }
 
   String _parseError(Response response) {
@@ -123,5 +138,9 @@ class ProfileRemoteDataSourceImpl implements ProfileRemoteDataSource {
       }
     }
     return e.message ?? 'Network error occurred';
+
+
   }
+
+
 }

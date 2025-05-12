@@ -3,10 +3,10 @@ import 'package:express_testing/features/profile/domain/usecase/delete_usecase.d
 import 'package:express_testing/features/profile/domain/usecase/log_out_usecase.dart';
 import 'package:express_testing/features/profile/domain/usecase/upload_file_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/global/models/network_response.dart';
-import '../../data/model/profile_model.dart';
-import '../../domain/usecase/update_user.dart';
-import 'profile_event.dart';
+import '../../../../../core/global/models/network_response.dart';
+import '../../../data/model/profile_model.dart';
+import '../../../domain/usecase/update_user.dart';
+import '../profile_event.dart';
 import 'profile_state.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {

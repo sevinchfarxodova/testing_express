@@ -1,5 +1,7 @@
+import 'package:express_testing/bottom_nav_bar.dart';
 import 'package:express_testing/features/profile/presentation/pages/app_language_page.dart';
 import 'package:express_testing/features/profile/presentation/pages/app_theme_page.dart';
+import 'package:express_testing/features/profile/presentation/pages/history_learning_page.dart';
 import 'package:express_testing/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'app_routes.dart';
@@ -35,12 +37,9 @@ class AppRoutes {
     case AppRoutesNames.appTheme:
       return MaterialPageRoute(builder: (context) =>  SettingTheme());
 
+    case AppRoutesNames.history:
+      return MaterialPageRoute(builder: (context) =>  HistoryLearningPage());
 
-    // case AppRoutesNames.history:
-    //   return MaterialPageRoute(builder: (context) => const HistoryScreen());
-
-    // case AppRoutesNames.themePage:
-    //   return MaterialPageRoute(builder: (context) => const ThemeScreen());
     // case AppRoutesNames.lesson:
     //   return MaterialPageRoute(builder: (context) => const LessonPage());
     // case AppRoutesNames.mustPay:
@@ -75,6 +74,9 @@ class AppRoutes {
     //   return MaterialPageRoute(builder: (context) => const TestPage());
     // case AppRoutesNames.ratePage:
     //   return MaterialPageRoute(builder: (context) => const RatePage());
+
+      case AppRoutesNames.bottomNavBar:
+        return MaterialPageRoute(builder: (context) =>  BottomNavBar());
 
 
       default:

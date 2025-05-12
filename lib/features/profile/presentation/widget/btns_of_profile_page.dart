@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:express_testing/core/utils/responsiveness/app_responsive.dart';
-import 'package:express_testing/features/profile/presentation/bloc/profile_bloc.dart';
+import 'package:express_testing/features/profile/presentation/bloc/profile/profile_bloc.dart';
 import 'package:express_testing/features/profile/presentation/bloc/profile_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

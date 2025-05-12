@@ -21,6 +21,10 @@ abstract class AppRoutesNames {
   static const String lesson = '/lesson';
   static const String testPage = '/testPage';
   static const String resultPage = '/result_page';
+
+  // bottom nav bar
+  static const String bottomNavBar = '/bottom_nav_bar';
+
 }
 
 

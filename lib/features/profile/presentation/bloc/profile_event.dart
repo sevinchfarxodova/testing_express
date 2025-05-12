@@ -25,3 +25,7 @@ class LogOutEvent extends ProfileEvent {
 class DeleteEvent extends ProfileEvent {
   const DeleteEvent();
 }
+
+class StreakEvent extends ProfileEvent {
+  const StreakEvent();
+}
