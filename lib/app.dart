@@ -2,6 +2,8 @@ import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:express_testing/features/profile/presentation/bloc/profile/profile_bloc.dart';
 import 'package:express_testing/features/profile/presentation/bloc/streaks/streaks_bloc.dart';
+import 'package:express_testing/features/tests_pages/presentation/bloc/test/test_bloc.dart';
+import 'package:express_testing/features/tests_pages/presentation/bloc/test/test_selection/test_selec_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,6 +38,8 @@ class MyApp extends StatelessWidget {
                 providers: [
                   BlocProvider<ProfileBloc>(create: (_) => sl<ProfileBloc>()),
                   BlocProvider<StreakBloc>(create: (_) => sl<StreakBloc>()),
+                  BlocProvider<TestBloc>(create: (_) => sl<TestBloc>()),
+                  BlocProvider<TestSelectionBloc>(create: (_) => sl<TestSelectionBloc>()),
                 ],
                 child: MaterialApp(
                   debugShowCheckedModeBanner: false,

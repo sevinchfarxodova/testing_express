@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'core/constants/app_icons.dart';
 import 'core/constants/colors/app_colors.dart';
+import 'features/tests_pages/presentation/pages/tests_option_page.dart';
 import 'languages/locale_keys.g.dart';
 
 class BottomNavBar extends StatefulWidget {
@@ -18,7 +19,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   final List<Widget> pages = [
     ProfilePage(),
-    ProfilePage(),
+    TestsOptionPage(),
     ProfilePage(),
   ];
 

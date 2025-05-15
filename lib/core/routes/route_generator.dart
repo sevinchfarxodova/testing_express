@@ -3,6 +3,8 @@ import 'package:express_testing/features/profile/presentation/pages/app_language
 import 'package:express_testing/features/profile/presentation/pages/app_theme_page.dart';
 import 'package:express_testing/features/profile/presentation/pages/history_learning_page.dart';
 import 'package:express_testing/features/profile/presentation/pages/profile_page.dart';
+import 'package:express_testing/features/tests_pages/presentation/pages/tests_option_page.dart';
+import 'package:express_testing/features/tests_pages/presentation/pages/tests_page.dart';
 import 'package:flutter/material.dart';
 import 'app_routes.dart';
 
@@ -25,7 +27,6 @@ class AppRoutes {
     //   return MaterialPageRoute(builder: (context) => const HomeScreen());
 
 
-    //  test
 
     //  profile
       case AppRoutesNames.profile:
@@ -40,23 +41,20 @@ class AppRoutes {
     case AppRoutesNames.history:
       return MaterialPageRoute(builder: (context) =>  HistoryLearningPage());
 
-    // case AppRoutesNames.lesson:
-    //   return MaterialPageRoute(builder: (context) => const LessonPage());
-    // case AppRoutesNames.mustPay:
-    //   return MaterialPageRoute(builder: (context) => const MustPayScreen());
-    // case AppRoutesNames.testUser:
-    //   return MaterialPageRoute(builder: (context) => const TestUserScreen());
+      // tests
+      case AppRoutesNames.testsOptionPage:
+        return MaterialPageRoute(builder: (context) =>  TestsOptionPage());
+      case AppRoutesNames.testPage:
+        return MaterialPageRoute(builder: (context) =>  TestPage());
+
+
     // case AppRoutesNames.confirm:
     //   return MaterialPageRoute(
     //     builder: (context) => ConfirmScreen(
     //       authCubit: settings.arguments as AuthCubit,
     //     ),
     //   );
-    //
-    // case AppRoutesNames.login:
-    //   return MaterialPageRoute(builder: (context) => const LoginScreen());
-    // case AppRoutesNames.splash:
-    //   return MaterialPageRoute(builder: (context) => const SplashScreen());
+
     // case AppRoutesNames.resultPage:
     //   {
     //     Map<String, dynamic> data =
@@ -69,11 +67,6 @@ class AppRoutes {
     //     );
     //   }
 
-
-    // case AppRoutesNames.testPage:
-    //   return MaterialPageRoute(builder: (context) => const TestPage());
-    // case AppRoutesNames.ratePage:
-    //   return MaterialPageRoute(builder: (context) => const RatePage());
 
       case AppRoutesNames.bottomNavBar:
         return MaterialPageRoute(builder: (context) =>  BottomNavBar());

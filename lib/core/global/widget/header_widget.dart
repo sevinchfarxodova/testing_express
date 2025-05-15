@@ -52,7 +52,7 @@ class HeaderWidget extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                "you",
+                "",
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       fontSize: 19.sp,
                     ),

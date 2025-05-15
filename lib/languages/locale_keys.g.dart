@@ -63,6 +63,12 @@ abstract class  LocaleKeys {
   static const great = 'great';
   static const training_days = 'training_days';
 
+
+  // 🔽 YANGILARI
+  static const good = 'good';
+  static const try_again = 'try_again';
+
+
   // bottom
   static const home = 'home';
   static const profile = 'profile';

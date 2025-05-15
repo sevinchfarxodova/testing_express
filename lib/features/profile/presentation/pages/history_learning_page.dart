@@ -35,7 +35,7 @@ class _HoState extends State<HistoryLearningPage> {
           20.getH,
           Text(
             LocaleKeys.stady_history.tr(),
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.start,
             style: Theme.of(context).textTheme.titleLarge?.copyWith(
               fontSize: 22.sp,
             ),

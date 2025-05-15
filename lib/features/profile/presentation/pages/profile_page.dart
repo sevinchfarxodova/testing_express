@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
-import 'package:express_testing/core/global/widget/header_widget.dart';
 import 'package:express_testing/core/global/widget/main_background.dart';
 import 'package:express_testing/core/routes/app_routes.dart';
 import 'package:express_testing/core/routes/navigation_service.dart';
@@ -55,7 +53,6 @@ class _ProfilePageState extends State<ProfilePage> {
         child: SafeArea(
           child: Column(
             children: [
-              HeaderWidget(onTapBack: () => Navigator.pop(context)),
               15.getH,
               BlocConsumer<ProfileBloc, ProfileState>(
                 listener: (context, state) {
@@ -127,7 +124,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ],
                         ),
-                        8.getH,
+                        6.getH,
                         const BtnsOfProfilePage(),
                       ],
                     ),

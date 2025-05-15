@@ -17,7 +17,6 @@ class DioClient {
         responseType: ResponseType.json,
         headers: {
           HttpHeaders.contentTypeHeader: ContentType.json.mimeType,
-          // HttpHeaders.authorizationHeader: 'Bearer ${AppConstants.apiToken}', // token
         },
       ),
     );
