@@ -1,7 +1,7 @@
-import 'package:express_testing/core/responsiveness/app_responsive.dart';
 import 'package:flutter/material.dart';
 import '../constants/colors/app_colors.dart';
 import '../styles/app_text_style.dart';
+import '../utils/responsiveness/app_responsive.dart';
 
 class AppTheme {
   AppTheme._();

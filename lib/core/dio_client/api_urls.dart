@@ -10,4 +10,5 @@ sealed class ApiUrls {
   static String getTest = "/test/get/list";
   static String getLesson = "/lesson/get/list";
   static String progressCreatePost = "/progress/create";
+  static String streakList = "/streak/get/list";
 }

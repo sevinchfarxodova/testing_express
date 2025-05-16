@@ -58,5 +58,11 @@
   "test_again": "Take the test again",
   "return_to_main": "Return to the main page",
   "great": "Great",
-  "training_days": "Training days"
+  "training_days": "Training days",
+
+  "profile": "Profile",
+  "home": "Home",
+
+  "good": "Good job!",
+  "try_again": "Try again!"
 }

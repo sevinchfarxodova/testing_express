@@ -55,7 +55,6 @@ abstract class  LocaleKeys {
   static const text_instruction = 'text_instruction';
   static const general_test = 'general_test';
   static const tests_on_text_instructions = 'tests_on_text_instructions';
-  static const tests = 'tests';
   static const find = 'find';
   static const test_results = 'test_results';
   static const finish = 'finish';
@@ -63,5 +62,16 @@ abstract class  LocaleKeys {
   static const return_to_main = 'return_to_main';
   static const great = 'great';
   static const training_days = 'training_days';
+
+
+  // 🔽 YANGILARI
+  static const good = 'good';
+  static const try_again = 'try_again';
+
+
+  // bottom
+  static const home = 'home';
+  static const profile = 'profile';
+  static const tests = 'tests';
 
 }

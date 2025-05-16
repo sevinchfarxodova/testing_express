@@ -34,4 +34,9 @@ sealed class AppIcons {
   static const String profileUser = "$_iconPath/profile_user.svg";
   static const String pencilEdit = "$_iconPath/pencil_edit.svg";
 
+  // bottom nav bar
+  static const String home = "$_iconPath/home.svg";
+  static const String tasks = "$_iconPath/tasks.svg";
+  static const String tests = "$_iconPath/tests.svg";
+  static const String user = "$_iconPath/user.svg";
 }

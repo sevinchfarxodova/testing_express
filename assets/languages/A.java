@@ -75,6 +75,10 @@ class CodegenLoader extends AssetLoader{
   "return_to_main": "Return to the main page",
   "great": "Great",
   "training_days": "Training days"
+  "training_days": "Training days"
+        // bottom
+          "profile": "Profile",
+          "home": "Home",
 };
 static const Map<String,dynamic> _ru = {
   "splash_text": "“Права за 2 месяца хорошо, но за 1 неделю хорошооо!”",
@@ -137,6 +141,10 @@ static const Map<String,dynamic> _ru = {
   "return_to_main": "Вернутся на главную",
   "great": "Отлично",
   "training_days": "Обучающие дни"
+
+        // bottom
+        "profile": "Профиль",
+        "home": "Главная",
 };
 static const Map<String,dynamic> _uz = {
   "splash_text": "“2 oylikda Guvohnoma yaxshi, lekin 1 haftada Guvohnoma juda yaxshi!”",
@@ -191,7 +199,11 @@ static const Map<String,dynamic> _uz = {
   "text_instruction": "Matnli ko'rsatma",
   "general_test": "Umumiy test",
   "tests_on_text_instructions": "Matnli ko'rsatma testlari",
+        // bottom
   "tests": "Testlar",
+  "profile": "Profil",
+  "home": "Asosiy",
+
   "find": "Nima to'g'ri ekanligini toping?",
   "test_results": "Test natijalari",
   "finish": "\"Siz deyarli marraga keldingiz!\"",
