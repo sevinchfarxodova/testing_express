@@ -23,6 +23,8 @@ Future<void> setupLocator() async {
   sl.registerLazySingleton(() => AuthSource(sl<ApiClient>()));
   sl.registerLazySingleton(() => HomeSource(sl<ApiClient>()));
 
+
+
   // Repositories
   sl.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(sl<AuthSource>()));
   sl.registerLazySingleton<HomeRepo>(() => HomeRepoImpl(sl<HomeSource>()));
