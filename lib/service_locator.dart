@@ -15,6 +15,7 @@ import 'features/lesson/presentation/bloc/get_task_bloc/get_task_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> setupLocator() async {
+
   // Core
   sl.registerLazySingleton(() => ApiClient());
 
