@@ -13,6 +13,10 @@ import 'core/routes/navigation_service.dart';
 import 'core/routes/route_generator.dart';
 import 'core/theme/app_theme.dart';
 import 'core/utils/responsiveness/app_responsive.dart';
+import 'features/auth/presentation/bloc/confirm_code/confirm_code_bloc.dart';
+import 'features/auth/presentation/bloc/sendSms/send_sms_bloc.dart';
+import 'features/lesson/presentation/bloc/get_task_bloc/get_task_bloc.dart';
+import 'features/lesson/presentation/bloc/home_event.dart';
 
 final RouteObserver<PageRoute> routeObserver = RouteObserver<PageRoute>();
 
@@ -36,6 +40,13 @@ class MyApp extends StatelessWidget {
             builder: (ThemeData light, ThemeData dark) {
               return MultiBlocProvider(
                 providers: [
+                  //auth
+                  BlocProvider<SendSmsBloc>(create: (_) => sl<SendSmsBloc>()),
+                  BlocProvider<ConfirmCodeBloc>(create: (_) => sl<ConfirmCodeBloc>()),
+                  BlocProvider<GetTaskBloc>(
+                    create: (context) => sl<GetTaskBloc>()..add(GetTaskEvent()),
+                  ),
+                  //profile
                   BlocProvider<ProfileBloc>(create: (_) => sl<ProfileBloc>()),
                   BlocProvider<StreakBloc>(create: (_) => sl<StreakBloc>()),
                   BlocProvider<TestBloc>(create: (_) => sl<TestBloc>()),
@@ -50,7 +61,7 @@ class MyApp extends StatelessWidget {
                   home: child,
                   navigatorKey: NavigationService.instance.navigatorKey,
                   onGenerateRoute: AppRoutes.generateRoute,
-                  initialRoute: AppRoutesNames.bottomNavBar,
+                  initialRoute: AppRoutesNames.home,
                 ),
               );
             },

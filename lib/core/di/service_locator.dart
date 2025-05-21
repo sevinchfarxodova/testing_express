@@ -1,3 +1,5 @@
+import 'package:express_testing/features/lesson/domain/usecases/get_task_list_usecase.dart';
+import 'package:express_testing/features/lesson/presentation/bloc/get_task_bloc/get_task_bloc.dart';
 import 'package:express_testing/features/profile/data/data_source/profile_data_source.dart';
 import 'package:express_testing/features/profile/data/data_source/profile_data_source_impl.dart';
 import 'package:express_testing/features/profile/data/repository/profile_repo_impl.dart';
@@ -20,6 +22,15 @@ import 'package:express_testing/features/tests_pages/presentation/bloc/test/test
 import 'package:express_testing/features/tests_pages/presentation/bloc/test/test_selection/test_selec_bloc.dart';
 import 'package:get_it/get_it.dart';
 
+import '../../features/auth/data/repo/auth_repo_impl.dart';
+import '../../features/auth/data/source/auth_source.dart';
+import '../../features/auth/domain/repository/auth_repo.dart';
+import '../../features/auth/presentation/bloc/confirm_code/confirm_code_bloc.dart';
+import '../../features/auth/presentation/bloc/sendSms/send_sms_bloc.dart';
+import '../../features/lesson/data/datasource/home_datasource.dart';
+import '../../features/lesson/data/repository/home_repo_impl.dart';
+import '../../features/lesson/domain/repository/home_repo.dart';
+import '../../features/lesson/domain/usecases/get_task_usecase.dart';
 import '../dio_client/api_service.dart';
 
 final sl = GetIt.instance;
@@ -29,30 +40,27 @@ Future<void> setupServiceLocator() async {
   sl.registerSingleton<DioClient>(DioClient());
 
   // DATA SOURCES
-  // profile
+  sl.registerLazySingleton(() => AuthSource(sl<DioClient>()));
+  sl.registerLazySingleton(() => HomeSource(sl<DioClient>()));
   sl.registerLazySingleton<ProfileRemoteDataSource>(
     () => ProfileRemoteDataSourceImpl(dioClient: sl<DioClient>()),
   );
-
-  // tests
   sl.registerLazySingleton<TestRemoteDataSource>(
-        () => TestRemoteDataSourceImpl(dioClient: sl<DioClient>()),
+    () => TestRemoteDataSourceImpl(dioClient: sl<DioClient>()),
   );
 
   // REPOSITORIES
-  //profile
-
+  sl.registerLazySingleton<AuthRepo>(() => AuthRepoImpl(sl<AuthSource>()));
+  sl.registerLazySingleton<HomeRepo>(() => HomeRepoImpl(sl<HomeSource>()));
   sl.registerLazySingleton<ProfileRepo>(
     () => ProfileRepoImpl(remoteDataSource: sl<ProfileRemoteDataSource>()),
   );
-
-  // tests
   sl.registerLazySingleton<TestRepository>(
-        () => TestRepoImpl(remoteDataSource: sl<TestRemoteDataSource>()),
+    () => TestRepoImpl(remoteDataSource: sl<TestRemoteDataSource>()),
   );
 
   // USE CASES
-  // profile
+  sl.registerLazySingleton(() => FetchDailyTasksUseCase(sl<HomeRepo>()));
   sl.registerLazySingleton<UpdateUserUseCase>(
     () => UpdateUserUseCase(sl<ProfileRepo>()),
   );
@@ -73,22 +81,28 @@ Future<void> setupServiceLocator() async {
     () => GetStreaksUseCase(sl<ProfileRepo>()),
   );
 
-
-
   // test
   sl.registerLazySingleton<GetTestsUseCase>(
-        () => GetTestsUseCase(repository:  sl<TestRepository>()),
+    () => GetTestsUseCase(repository: sl<TestRepository>()),
   );
 
   sl.registerLazySingleton<IncorrectAttemptsAddCountUseCase>(
-        () => IncorrectAttemptsAddCountUseCase(repository: sl<TestRepository>()),
+    () => IncorrectAttemptsAddCountUseCase(repository: sl<TestRepository>()),
   );
 
   sl.registerLazySingleton<ProgressCreateUseCase>(
-        () => ProgressCreateUseCase(repository: sl<TestRepository>()),
+    () => ProgressCreateUseCase(repository: sl<TestRepository>()),
+  );
+  sl.registerLazySingleton<GetTaskListUseCase>(
+    () => GetTaskListUseCase(sl<HomeRepo>()),
   );
 
-  //BLOCS
+  //BLOCS **************************************************************
+  sl.registerFactory(() => SendSmsBloc(authRepo: sl<AuthRepo>()));
+  sl.registerFactory(() => ConfirmCodeBloc(sl<AuthRepo>()));
+
+  // BLoC - Home
+  // sl.registerFactory(() => GetTaskBloc(sl<FetchDailyTasksUseCase>()));
   //     profile
 
   sl.registerFactory<ProfileBloc>(
@@ -103,17 +117,17 @@ Future<void> setupServiceLocator() async {
   sl.registerFactory<StreakBloc>(
     () => StreakBloc(getStreaksUseCase: sl<GetStreaksUseCase>()),
   );
+  sl.registerFactory<GetTaskBloc>(() => GetTaskBloc(sl<GetTaskListUseCase>()));
 
   // tests
   sl.registerLazySingleton<TestBloc>(
-        () => TestBloc(getTestsUseCase: sl<GetTestsUseCase>()),
+    () => TestBloc(getTestsUseCase: sl<GetTestsUseCase>()),
   );
 
   sl.registerLazySingleton<TestSelectionBloc>(
-        () => TestSelectionBloc(
-          incorrectAttemptsAddCountUseCase: sl<IncorrectAttemptsAddCountUseCase>(),
-          progressCreateUseCase: sl<ProgressCreateUseCase>(),
-
-        ),
+    () => TestSelectionBloc(
+      incorrectAttemptsAddCountUseCase: sl<IncorrectAttemptsAddCountUseCase>(),
+      progressCreateUseCase: sl<ProgressCreateUseCase>(),
+    ),
   );
 }

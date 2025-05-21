@@ -6,6 +6,7 @@ sealed class ApiUrls {
   static String getProfile = "/user/get/profile";
   static String uploadFile = "/file-upload";
   static String updateProfile = "/user/update/profile";
+  static String getTaskList = "task/get/list";
   static String deleteProfile = "/user/delete/profile";
   static String getTest = "/test/get/list";
   static String getLesson = "/lesson/get/list";

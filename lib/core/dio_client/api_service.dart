@@ -16,7 +16,8 @@ class DioClient {
         receiveTimeout:  Duration(seconds: 20),
         responseType: ResponseType.json,
         headers: {
-          HttpHeaders.contentTypeHeader: ContentType.json.mimeType,
+          // HttpHeaders.contentTypeHeader: ContentType.json.mimeType,
+          'Content-Type': 'application/json',
         },
       ),
     );
