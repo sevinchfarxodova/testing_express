@@ -19,6 +19,7 @@ void main(List<String> args) async {
     DeviceOrientation.portraitDown,
   ]);
 
+
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
     statusBarColor: Colors.transparent, // Transparent status bar
     statusBarBrightness: Brightness.dark, // Dark text for status bar
